@@ -2,6 +2,7 @@ package com.thoughtworks.collection;
 
 import org.apache.commons.lang3.NotImplementedException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Filter {
 
@@ -12,14 +13,25 @@ public class Filter {
     }
 
     public List<Integer> filterEven() {
-        throw new NotImplementedException();
+        List<Integer> evenNum = this.array.stream()
+                .filter(item->item%2==0)
+                .collect(Collectors.toList());
+        return evenNum;
+
     }
 
     public List<Integer> filterMultipleOfThree() {
-        throw new NotImplementedException();
+        List<Integer> mulitpleOfThree = this.array.stream()
+                .filter(item->item%3==0)
+                .collect(Collectors.toList());
+        return mulitpleOfThree;
     }
 
     public List<Integer> getCommonElements(List<Integer> firstList, List<Integer> secondList) {
-        throw new NotImplementedException();
+        List<Integer> elements = firstList.stream()
+                .filter(item->secondList.contains(item))
+                .collect(Collectors.toList());
+        return elements;
+
     }
 }
